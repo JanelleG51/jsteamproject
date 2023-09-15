@@ -21,7 +21,8 @@ app.get('/albums/:id', function (req, res) {
 	   for (var i = 0; i < data.length; i++) {
       if (data[i].id == idOfAlbum) {
 		   		var returnAlbum = data[i]
-      }
+      }else if (data[i].artist == idOfAlbum){
+      var returnAlbum = data[i]}
 	   }
     console.log(returnAlbum)
     res.end(JSON.stringify(returnAlbum))

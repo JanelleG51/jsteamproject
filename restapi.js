@@ -17,7 +17,7 @@ app.get('/albums/:id', function (req, res) {
   fs.readFile(__dirname + '/' + 'albums.json', 'utf8', function (err, data) {
 	   var idOfAlbum = req.params.id
 	   data = JSON.parse(data)
-	   console.log('you requested album ' + idOfAlbum)
+	   console.log('You requested album ' + idOfAlbum)
 	   for (var i = 0; i < data.length; i++) {
       if (data[i].id == idOfAlbum) {
 		   		var returnAlbum = data[i]

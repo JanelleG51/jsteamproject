@@ -6,25 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-<div id="starwars"></div>
+<div id="result"></div>
 <script>
     async function getSomeStarWarsStuff() {
-        let starWarsDataResponse = await fetch("https://swapi.dev/api/planets/2");
-        let planet = await starWarsDataResponse.json();
-        document.getElementById("starwars").innerHTML = planet.name;
-    }
-    function getSomeStarWarsStuffWithThen() {
-        fetch("https://swapi.dev/api/planets/3")
-         .then((starWarsDataResponse) => {
-            starWarsDataResponse.json()
-              .then((planet) => {
-                    document.getElementById("starwars").innerHTML += planet.name;
-                }) 
-         });
+        let response = await fetch("http://localhost:8081/albums/1");
+        let result = await response.json();
+        console.log(result);
+        document.getElementById("result").innerHTML = result.title;
     }
 
     getSomeStarWarsStuff();
-    document.getElementById("starwars").innerHTML = "hello world";
 </script>
 
 </body>

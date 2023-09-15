@@ -9,15 +9,19 @@
 <div id="result"></div>
 <script>
     async function getSomeStarWarsStuff(id) {
-        let response = await fetch("http://localhost:8081/albums/"+id);
-        let result = await response.json();
-        console.log(result);
-        document.getElementById("result").innerHTML = `${result.title} by ${result.artist}<br> Tracks: ${result.tracks}<br> Price: ${result.price}`;
+        fetch("http://localhost:8081/albums/"+id)
+         .then((response) => {
+            response.json()
+              .then((result) => {
+                document.getElementById("result").innerHTML = `${result.title} by ${result.artist}<br> Tracks: ${result.tracks}<br> Price: ${result.price}`;
+                },
+                (error) => {
+                document.getElementById("result").innerHTML = "No such artist";
+                }) 
+         });
     }
- 
-    // getSomeStarWarsStuff();
 </script>
-<input id="tin" type="text" placeholder="enter a band id">
+<input id="tin" type="text" placeholder="Enter a band id">
 <button onclick="getSomeStarWarsStuff(document.getElementById('tin').value)">Submit</button>
 </body>
 </html>
